@@ -1292,7 +1292,7 @@ int32_t qpnp_adc_scale_default(struct qpnp_vadc_chip *vadc,
 	if (negative_offset)
 		scale_voltage = -scale_voltage;
 
-	if (chan_properties->calib_type == CALIB_ABSOLUTE)
+	if (CALIB_ABSOLUTE == chan_properties->calib_type)
 		scale_voltage +=
 		chan_properties->adc_graph[chan_properties->calib_type].dx;
 	else
