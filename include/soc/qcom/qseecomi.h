@@ -89,18 +89,18 @@ enum qseecom_pipe_type {
 	QSEOS_PIPE_ENUM_FILL = 0x7FFFFFFF
 };
 
-__packed  struct qsee_apps_region_info_ireq {
+struct __packed qsee_apps_region_info_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t addr;
 	uint32_t size;
 };
 
-__packed struct qseecom_check_app_ireq {
+struct __packed qseecom_check_app_ireq {
 	uint32_t qsee_cmd_id;
 	char     app_name[MAX_APP_NAME_SIZE];
 };
 
-__packed struct qseecom_load_app_ireq {
+struct __packed qseecom_load_app_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t mdt_len;		/* Length of the mdt file */
 	uint32_t img_len;		/* Length of .bxx and .mdt files */
@@ -108,35 +108,35 @@ __packed struct qseecom_load_app_ireq {
 	char     app_name[MAX_APP_NAME_SIZE];	/* application name*/
 };
 
-__packed struct qseecom_unload_app_ireq {
+struct __packed qseecom_unload_app_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t  app_id;
 };
 
-__packed struct qseecom_load_lib_image_ireq {
+struct __packed qseecom_load_lib_image_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t mdt_len;
 	uint32_t img_len;
 	uint32_t phy_addr;
 };
 
-__packed struct qseecom_unload_lib_image_ireq {
+struct __packed qseecom_unload_lib_image_ireq {
 	uint32_t qsee_cmd_id;
 };
 
-__packed struct qseecom_register_listener_ireq {
+struct __packed qseecom_register_listener_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t listener_id;
 	uint32_t sb_ptr;
 	uint32_t sb_len;
 };
 
-__packed struct qseecom_unregister_listener_ireq {
+struct __packed qseecom_unregister_listener_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t  listener_id;
 };
 
-__packed struct qseecom_client_send_data_ireq {
+struct __packed qseecom_client_send_data_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t app_id;
 	uint32_t req_ptr;
@@ -145,14 +145,14 @@ __packed struct qseecom_client_send_data_ireq {
 	uint32_t rsp_len;
 };
 
-__packed struct qseecom_reg_log_buf_ireq {
+struct __packed qseecom_reg_log_buf_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t phy_addr;
 	uint32_t len;
 };
 
 /* send_data resp */
-__packed struct qseecom_client_listener_data_irsp {
+struct __packed qseecom_client_listener_data_irsp {
 	uint32_t qsee_cmd_id;
 	uint32_t listener_id;
 	uint32_t status;
@@ -165,7 +165,7 @@ __packed struct qseecom_client_listener_data_irsp {
  *                buffer
  * @sb_in_rsp_len: length of command response
  */
-__packed struct qseecom_command_scm_resp {
+struct __packed qseecom_command_scm_resp {
 	uint32_t result;
 	enum qseecom_command_scm_resp_type resp_type;
 	unsigned int data;
@@ -175,7 +175,7 @@ struct qseecom_rpmb_provision_key {
 	uint32_t key_type;
 };
 
-__packed struct qseecom_client_send_service_ireq {
+struct __packed qseecom_client_send_service_ireq {
 	uint32_t qsee_cmd_id;
 	uint32_t key_type; /* in */
 	unsigned int req_len; /* in */
@@ -183,14 +183,14 @@ __packed struct qseecom_client_send_service_ireq {
 	unsigned int rsp_len; /* in/out */
 };
 
-__packed struct qseecom_key_generate_ireq {
+struct __packed qseecom_key_generate_ireq {
 	uint32_t qsee_command_id;
 	uint32_t flags;
 	uint8_t key_id[QSEECOM_KEY_ID_SIZE];
 	uint8_t hash32[QSEECOM_HASH_SIZE];
 };
 
-__packed struct qseecom_key_select_ireq {
+struct __packed qseecom_key_select_ireq {
 	uint32_t qsee_command_id;
 	uint32_t ce;
 	uint32_t pipe;
@@ -200,7 +200,7 @@ __packed struct qseecom_key_select_ireq {
 	uint8_t hash32[QSEECOM_HASH_SIZE];
 };
 
-__packed struct qseecom_key_delete_ireq {
+struct __packed qseecom_key_delete_ireq {
 	uint32_t qsee_command_id;
 	uint32_t flags;
 	uint8_t key_id[QSEECOM_KEY_ID_SIZE];
@@ -208,7 +208,7 @@ __packed struct qseecom_key_delete_ireq {
 
 };
 
-__packed struct qseecom_key_userinfo_update_ireq {
+struct __packed qseecom_key_userinfo_update_ireq {
 	uint32_t qsee_command_id;
 	uint32_t flags;
 	uint8_t key_id[QSEECOM_KEY_ID_SIZE];
@@ -216,15 +216,15 @@ __packed struct qseecom_key_userinfo_update_ireq {
 	uint8_t new_hash32[QSEECOM_HASH_SIZE];
 };
 
-__packed struct qseecom_key_max_count_query_ireq {
+struct __packed qseecom_key_max_count_query_ireq {
 	uint32_t flags;
 };
 
-__packed struct qseecom_key_max_count_query_irsp {
+struct __packed qseecom_key_max_count_query_irsp {
 	uint32_t max_key_count;
 };
 
-__packed struct qseecom_qteec_ireq {
+struct __packed qseecom_qteec_ireq {
 	uint32_t    qsee_cmd_id;
 	uint32_t    app_id;
 	uint32_t    req_ptr;
@@ -233,7 +233,7 @@ __packed struct qseecom_qteec_ireq {
 	uint32_t    resp_len;
 };
 
-__packed struct qseecom_client_send_fsm_key_req {
+struct __packed qseecom_client_send_fsm_key_req {
 	uint32_t qsee_cmd_id;
 	uint32_t req_ptr;
 	uint32_t req_len;
