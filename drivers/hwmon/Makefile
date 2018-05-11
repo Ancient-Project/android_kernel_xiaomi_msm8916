@@ -149,4 +149,4 @@ obj-$(CONFIG_SENSORS_BOOST_DYNAMIC_CONTROLLER)	+= boost-dynamic-controller.o
 obj-$(CONFIG_PMBUS)		+= pmbus/
 
 ccflags-$(CONFIG_HWMON_DEBUG_CHIP) := -DDEBUG
-
+CFLAGS_qpnp-adc-voltage.o := $(call cc-disable-warning, enum-conversion)
