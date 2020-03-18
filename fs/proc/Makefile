@@ -6,6 +6,7 @@ obj-y   += proc.o
 
 proc-y			:= nommu.o task_nommu.o
 proc-$(CONFIG_MMU)	:= task_mmu.o
+CFLAGS_task_mmu.o := $(call cc-disable-warning, initializer-overrides)
 
 proc-y       += inode.o root.o base.o generic.o array.o \
 		fd.o
